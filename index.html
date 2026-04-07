@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Merapob | Мессенджер будущего</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #0a0f2a 0%, #0f172a 100%);
+            color: #e2e8f0;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 3rem 0 2rem;
+        }
+
+        .logo {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1.25rem;
+            color: #94a3b8;
+        }
+
+        /* Hero section */
+        .hero {
+            text-align: center;
+            padding: 2rem 0 3rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #f1f5f9;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: #cbd5e1;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 14px rgba(59,130,246,0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59,130,246,0.5);
+        }
+
+        /* Cards */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .card {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(4px);
+            border-radius: 24px;
+            padding: 1.8rem;
+            border: 1px solid rgba(71, 85, 105, 0.5);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            border-color: #3b82f6;
+            transform: translateY(-4px);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: #f1f5f9;
+        }
+
+        .card p {
+            color: #94a3b8;
+        }
+
+        /* Visibility section */
+        .visibility-section {
+            background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(139,92,246,0.1));
+            border-radius: 32px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            border: 1px solid rgba(59,130,246,0.3);
+        }
+
+        .visibility-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #60a5fa;
+            text-align: center;
+        }
+
+        .visibility-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .visibility-card {
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .visibility-card .level {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #3b82f6;
+            margin-bottom: 0.5rem;
+        }
+
+        .visibility-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .visibility-card p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+
+        /* Relationships section */
+        .relationships {
+            background: rgba(15, 23, 42, 0.7);
+            border-radius: 32px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            border-left: 4px solid #ec4899;
+        }
+
+        .relationships h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #f472b6;
+        }
+
+        .relationships p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .relationship-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .rel-type {
+            background: rgba(236, 72, 153, 0.1);
+            border-radius: 20px;
+            padding: 1.2rem;
+            text-align: center;
+            border: 1px solid rgba(236, 72, 153, 0.3);
+        }
+
+        .rel-type .emoji {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .rel-type h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Story section */
+        .story {
+            background: rgba(15, 23, 42, 0.7);
+            border-radius: 32px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .story h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #60a5fa;
+        }
+
+        .story p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .story .name-meaning {
+            background: rgba(59, 130, 246, 0.15);
+            padding: 1.2rem;
+            border-radius: 20px;
+            margin: 1.5rem 0;
+            font-family: monospace;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        /* Download section */
+        .download {
+            text-align: center;
+            padding: 2rem;
+            margin: 3rem 0;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border-radius: 48px;
+        }
+
+        .download h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .download p {
+            margin-bottom: 1.5rem;
+            color: #94a3b8;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid #1e293b;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 640px) {
+            .logo { font-size: 2.8rem; }
+            .hero h1 { font-size: 1.8rem; }
+            .container { padding: 1rem; }
+            .story, .visibility-section, .relationships { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">MERAPOB</div>
+            <div class="tagline">простой. быстрый. твой.</div>
+        </div>
+
+        <!-- Hero -->
+        <div class="hero">
+            <h1>Мессенджер, который работает</h1>
+            <p>Без рекламы, без слежки, без лишнего. Просто общайся с теми, кто важен.</p>
+            <a href="#" class="btn" id="comingSoonBtn">Скоро будет доступно →</a>
+        </div>
+
+        <!-- Features -->
+        <div class="features">
+            <div class="card">
+                <div class="card-icon">🔒</div>
+                <h3>Приватность</h3>
+                <p>Никто не читает твои сообщения. Только ты и твой собеседник.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">⚡</div>
+                <h3>Мгновенно</h3>
+                <p>Молниеносная доставка сообщений. Никаких задержек.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📡</div>
+                <h3>Без интернета</h3>
+                <p>Работает напрямую. Даже когда нет сети.</p>
+            </div>
+        </div>
+
+        <!-- Кто видит -->
+        <div class="visibility-section">
+            <h2>👁️ Кто видит тебя?</h2>
+            <p style="text-align: center; margin-bottom: 1rem;">Ты сам решаешь, кто может найти тебя в Merapob. Никаких неожиданностей.</p>
+            <div class="visibility-grid">
+                <div class="visibility-card">
+                    <div class="level">1</div>
+                    <h3>Тем, кому я написал</h3>
+                    <p>Тебя видят только те люди, которым ты сам отправил сообщение. Полный контроль над кругом общения.</p>
+                </div>
+                <div class="visibility-card">
+                    <div class="level">2</div>
+                    <h3>Всем</h3>
+                    <p>Тебя могут найти все пользователи Merapob. Открытость без ограничений.</p>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: #94a3b8;">✨ Уровень видимости можно менять в любой момент в настройках профиля</p>
+        </div>
+
+        <!-- Отношения -->
+        <div class="relationships">
+            <h2>💝 Не просто мессенджер</h2>
+            <p><strong>Merapob</strong> — это место, где рождаются настоящие отношения. Мы верим, что общение может быть разным, и поддерживаем любой его формат.</p>
+            <div class="relationship-types">
+                <div class="rel-type">
+                    <div class="emoji">👥</div>
+                    <h4>Дружеские</h4>
+                    <p>Общайся с друзьями, делись новостями, поддерживай связь каждый день.</p>
+                </div>
+                <div class="rel-type">
+                    <div class="emoji">💕</div>
+                    <h4>Романтические</h4>
+                    <p>Флирт, свидания, признания — всё, что делает жизнь ярче.</p>
+                </div>
+                <div class="rel-type">
+                    <div class="emoji">👨‍👩‍👧</div>
+                    <h4>Семейные</h4>
+                    <p>Близкие всегда на связи. Делитесь моментами и заботой.</p>
+                </div>
+                <div class="rel-type">
+                    <div class="emoji">💼</div>
+                    <h4>Деловые</h4>
+                    <p>Рабочие вопросы, проекты, коллеги — всё в одном месте.</p>
+                </div>
+            </div>
+            <p style="margin-top: 1rem; text-align: center; font-style: italic; color: #cbd5e1;">«В Merapob ты сам выбираешь, кем станет твой собеседник — другом, партнёром или соратником»</p>
+        </div>
+
+        <!-- История названия -->
+        <div class="story">
+            <h2>📖 История названия</h2>
+            <p><strong>Merapob</strong> — это не случайный набор букв. За этим названием стоит идея, которая родилась во время разработки первого прототипа.</p>
+            <p>Название сложилось из первых слогов ключевых слов:</p>
+            <div class="name-meaning">
+                <strong>Ме</strong>ссенджер + <strong>Ра</strong>ботающий + <strong>По</strong> + <strong>Б</strong>лютуз<br>
+                → <strong style="color:#60a5fa; font-size:1.3rem;">МЕРАПОБ</strong>
+            </div>
+            <p>Изначально Merapob задумывался как мессенджер, работающий через Bluetooth — без интернета, без серверов, просто два устройства рядом. Со временем концепция расширилась, но имя осталось как напоминание о корнях: технологии, которая связывает людей напрямую.</p>
+            <p>Мы сохранили дух эксперимента и свободы. Merapob — это не просто приложение. Это способ общаться без посредников.</p>
+        </div>
+
+        <!-- Download -->
+        <div class="download">
+            <h2>🚀 Готов изменить способ общения?</h2>
+            <p>Merapob скоро появится в магазинах приложений. Подпишись на новости, чтобы не пропустить релиз.</p>
+            <a href="#" class="btn" id="newsletterBtn">Сообщить о релизе</a>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Merapob — проект в разработке</p>
+            <p style="margin-top: 0.5rem;">&copy; 2026 Merapob. Все права защищены.</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('comingSoonBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Merapob скоро появится в магазинах приложений. Следите за новостями!');
+        });
+        document.getElementById('newsletterBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Подписка на новости Merapob откроется позже. Спасибо за интерес!');
+        });
+    </script>
+</body>
+</html>
